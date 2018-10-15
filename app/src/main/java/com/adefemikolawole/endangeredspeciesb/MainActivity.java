@@ -8,6 +8,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -19,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
-
 
 
 import static android.widget.AdapterView.*;
@@ -55,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
 
 
     }
@@ -98,20 +99,40 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-    public void showAuthor(){
+
+    public void showAuthor() {
         final LinearLayout coordinatorLayout = findViewById(R.id.linearLayout);
-        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Author: Adefemi Kolawole \n ITEC 4550 - Fall 2018", Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Author: Adefemi Kolawole \nITEC 4550 - Fall 2018", Snackbar.LENGTH_LONG);
         snackbar.show();
 
     }
 
-    public void changeStAcBArBgColor(){
+    public void changeStAcBArBgColor() {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.lightGreen)));
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(getResources().getColor(R.color.darkGreen));
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.about_menu, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about:
+                showAuthor();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
 }

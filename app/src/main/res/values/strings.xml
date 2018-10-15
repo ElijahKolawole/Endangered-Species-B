@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Endangered Species</string>
+    <string name="app_name">Endangered SpeciesB</string>
     <string name="imgLarge">Endangered Species Images</string>
+    <string name="about">About</string>
 </resources>
